@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, TextField, Box, CircularProgress } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,26 +14,29 @@ const LoginPageForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
     setError
-  } = useForm({ resolver: yupResolver(loginSchema) });
-
+    } = useForm({ resolver: yupResolver(loginSchema) });
   const onSubmit = async (data: FormDetails): Promise<void> => {
     await request(data);
-
-    switch(statusCode){
-      case 401:
-        setError("password", {type:"server", message:"סיסמא שגויה"})
-        break
-      case 404:
-        setError("username", {type:"server", message:"המשתמש לא רשום במערכת"})
-        break
-    }
   };
+
+  useEffect(() => {
+    switch (statusCode) {
+      case 401:
+        setError("password", { type: "server", message: "סיסמא שגויה" });
+        break;
+      case 404:
+        setError("username", {
+          type: "server",
+          message: "המשתמש לא רשום במערכת",
+        });
+        break;
+    }
+  }, [statusCode]);
 
   return (
     <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      noValidate
       sx={{ mt: 1 }}
       dir="rtl"
     >

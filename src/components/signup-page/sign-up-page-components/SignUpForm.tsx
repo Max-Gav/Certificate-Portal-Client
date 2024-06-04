@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, TextField, Box, CircularProgress } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,24 +13,37 @@ const SignUpForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setError
+    setError,
   } = useForm({ resolver: yupResolver(registerSchema) });
 
   const onSubmit = async (data: FormDetails): Promise<void> => {
     await request(data);
-    
-    switch(statusCode){
+
+    switch (statusCode) {
       case 409:
-        setError("username", {type:"server", message:"המשתמש כבר רשום במערכת"})
-        break
+        setError("username", {
+          type: "server",
+          message: "המשתמש כבר רשום במערכת",
+        });
+        break;
     }
   };
+
+  useEffect(() => {
+    switch (statusCode) {
+      case 409:
+        setError("username", {
+          type: "server",
+          message: "המשתמש כבר רשום במערכת",
+        });
+        break;
+    }
+  }, [statusCode]);
 
   return (
     <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      noValidate
       sx={{ mt: 1 }}
       dir="rtl"
     >
