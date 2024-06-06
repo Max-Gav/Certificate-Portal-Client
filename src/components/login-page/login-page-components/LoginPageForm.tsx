@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../../common/schemas/loginSchema";
 import useAuthForm from "../../../hooks/auth/useAuthForm";
-import APIRoutes from "../../../config/APIRoutes";
+import APIRoutes from "../../../config/api/APIRoutes";
 import FormDetails from "../../../common/types/FormDetails";
 
 const LoginPageForm: React.FC = () => {
@@ -49,6 +49,7 @@ const LoginPageForm: React.FC = () => {
         autoFocus
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
+        color="secondary"
         {...register("username")}
       />
       <TextField
@@ -60,6 +61,7 @@ const LoginPageForm: React.FC = () => {
         id="password"
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
+        color="secondary"
         {...register("password")}
       />
       <Button
@@ -67,7 +69,7 @@ const LoginPageForm: React.FC = () => {
         color={loading ? "secondary" : "primary"}
         fullWidth
         variant="contained"
-        sx={{ mt: 3, mb: 2, fontWeight: "bold", height: "40px" }}
+        sx={{ mt: 3, mb: 2, height: "40px" }}
       >
         {loading ? <CircularProgress color="inherit" size={24} /> : "התחברות"}
       </Button>

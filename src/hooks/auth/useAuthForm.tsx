@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axiosInstance from "../../config/api";
+import axiosInstance from "../../config/api/api";
 import { AxiosError } from "axios";
 import FormDetails from "../../common/types/FormDetails";
 

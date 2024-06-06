@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registerSchema from "../../../common/schemas/registerSchema";
 import useAuthForm from "../../../hooks/auth/useAuthForm";
-import APIRoutes from "../../../config/APIRoutes";
+import APIRoutes from "../../../config/api/APIRoutes";
 import FormDetails from "../../../common/types/FormDetails";
 
 const SignUpForm: React.FC = () => {
@@ -56,6 +56,8 @@ const SignUpForm: React.FC = () => {
         autoFocus
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
+        color="secondary"
+
         {...register("username")}
       />
       <TextField
@@ -67,6 +69,7 @@ const SignUpForm: React.FC = () => {
         id="password"
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
+        color="secondary"
         {...register("password")}
       />
       <TextField
@@ -78,6 +81,7 @@ const SignUpForm: React.FC = () => {
         id="confirmPassword"
         error={Boolean(errors.confirmPassword)}
         helperText={errors.confirmPassword?.message}
+        color="secondary"
         {...register("confirmPassword")}
       />
       <Button
@@ -85,7 +89,7 @@ const SignUpForm: React.FC = () => {
         color="primary"
         fullWidth
         variant="contained"
-        sx={{ mt: 3, mb: 2, fontWeight: "bold", height: "40px" }}
+        sx={{ mt: 3, mb: 2, height: "40px" }}
       >
         {loading ? <CircularProgress color="inherit" size={24} /> : "צור משתמש"}
       </Button>
