@@ -1,1 +1,2 @@
-export const host_base_url = "http://127.0.0.1:9000"
+export const HOST_BASE_URL = "http://127.0.0.1:9000"
+export const APP_NAME = "Portal"
