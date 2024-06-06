@@ -9,6 +9,11 @@ function App() {
   return (
     <BrowserRouter>
       <RTLWrapper>
+          <Routes>
+            <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
+            <Route path={AppRoutes.REGISTER} element={<SignUpPage />} />
+          </Routes>
+        </RTLWrapper>
         <Routes>
           <Route index element={<HomePage />} />
           <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
