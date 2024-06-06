@@ -21,8 +21,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <RTLWrapper>
+      <BrowserRouter>
+        <RTLWrapper>
           <Routes>
             <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
             <Route path={AppRoutes.REGISTER} element={<SignUpPage />} />
@@ -30,11 +30,9 @@ function App() {
         </RTLWrapper>
         <Routes>
           <Route index element={<HomePage />} />
-          <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
-          <Route path={AppRoutes.REGISTER} element={<SignUpPage />} />
         </Routes>
-      </RTLWrapper>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
