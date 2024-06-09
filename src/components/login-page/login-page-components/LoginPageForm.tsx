@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, TextField, Box, CircularProgress } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,15 +8,17 @@ import APIRoutes from "../../../config/api/APIRoutes";
 import FormDetails from "../../../common/types/FormDetails";
 
 const LoginPageForm: React.FC = () => {
-  const { request, loading, statusCode } = useAuthForm(APIRoutes.LOGIN);
+  const [statusCode, setStatusCode] = useState<number | undefined>(undefined);
+  const loginMutation = useAuthForm(APIRoutes.LOGIN, setStatusCode);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setError
-    } = useForm({ resolver: yupResolver(loginSchema) });
-  const onSubmit = async (data: FormDetails): Promise<void> => {
-    await request(data);
+    setError,
+  } = useForm({ resolver: yupResolver(loginSchema) });
+  
+  const onSubmit = (data: FormDetails) => {
+    loginMutation.mutate(data);
   };
 
   useEffect(() => {
@@ -66,12 +68,16 @@ const LoginPageForm: React.FC = () => {
       />
       <Button
         type="submit"
-        color={loading ? "secondary" : "primary"}
+        color={loginMutation.isLoading ? "secondary" : "primary"}
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2, height: "40px" }}
       >
-        {loading ? <CircularProgress color="inherit" size={24} /> : "התחברות"}
+        {loginMutation.isLoading ? (
+          <CircularProgress color="inherit" size={24} />
+        ) : (
+          "התחברות"
+        )}
       </Button>
     </Box>
   );

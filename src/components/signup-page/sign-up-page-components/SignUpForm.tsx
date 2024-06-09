@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, TextField, Box, CircularProgress } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,7 +8,8 @@ import APIRoutes from "../../../config/api/APIRoutes";
 import FormDetails from "../../../common/types/FormDetails";
 
 const SignUpForm: React.FC = () => {
-  const { request, loading, statusCode } = useAuthForm(APIRoutes.REGISTER);
+  const [statusCode, setStatusCode] = useState<number | undefined>(undefined);
+  const registerMutation = useAuthForm(APIRoutes.REGISTER, setStatusCode);
   const {
     register,
     handleSubmit,
@@ -16,17 +17,8 @@ const SignUpForm: React.FC = () => {
     setError,
   } = useForm({ resolver: yupResolver(registerSchema) });
 
-  const onSubmit = async (data: FormDetails): Promise<void> => {
-    await request(data);
-
-    switch (statusCode) {
-      case 409:
-        setError("username", {
-          type: "server",
-          message: "המשתמש כבר רשום במערכת",
-        });
-        break;
-    }
+  const onSubmit = (data: FormDetails) => {
+    registerMutation.mutate(data);
   };
 
   useEffect(() => {
@@ -57,7 +49,6 @@ const SignUpForm: React.FC = () => {
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
         color="secondary"
-
         {...register("username")}
       />
       <TextField
@@ -86,12 +77,16 @@ const SignUpForm: React.FC = () => {
       />
       <Button
         type="submit"
-        color="primary"
+        color={registerMutation.isLoading ? "secondary" : "primary"}
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2, height: "40px" }}
       >
-        {loading ? <CircularProgress color="inherit" size={24} /> : "צור משתמש"}
+        {registerMutation.isLoading ? (
+          <CircularProgress color="inherit" size={24} />
+        ) : (
+          "צור משתמש"
+        )}
       </Button>
     </Box>
   );
