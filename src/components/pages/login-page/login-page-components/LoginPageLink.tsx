@@ -1,6 +1,6 @@
 import { Box, Link } from "@mui/material";
 import React from "react";
-import AppRoutes from "../../../config/routes/AppRoutes";
+import AppRoutes from "../../../../config/routes/AppRoutes";
 
 const LoginPageLink: React.FC = () => {
   return (

@@ -2,12 +2,13 @@ import React from "react";
 import { Box, Container } from "@mui/material";
 import LoginPageForm from "./login-page-components/LoginPageForm";
 import LoginPageLink from "./login-page-components/LoginPageLink";
-import FormTitle from "../../common/components/form-components/form-title/FormTitle";
-import FormNavbar from "../../common/components/form-components/form-navbar/FormNavbar";
+import FormNavbar from "../../common/form-components/form-navbar/FormNavbar";
+import FormTitle from "../../common/form-components/form-title/FormTitle";
+import ProtectedPage from "../../common/protected-page/ProtectedPage";
 
 const LoginPage: React.FC = () => {
   return (
-    <>
+    <ProtectedPage isTokenRequired={false}>
       <FormNavbar />
       <Container component="main" maxWidth="xs">
         <Box
@@ -19,7 +20,7 @@ const LoginPage: React.FC = () => {
             padding: "20px",
             border: "2px solid black",
             borderRadius: "10px",
-            marginTop:"64px"
+            marginTop: "64px",
           }}
         >
           <FormTitle title="התחברות" />
@@ -27,7 +28,7 @@ const LoginPage: React.FC = () => {
           <LoginPageLink />
         </Box>
       </Container>
-    </>
+    </ProtectedPage>
   );
 };
 

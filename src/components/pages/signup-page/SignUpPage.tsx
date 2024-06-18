@@ -2,12 +2,13 @@ import React from "react";
 import { Box, Container } from "@mui/material";
 import SignUpForm from "./sign-up-page-components/SignUpForm";
 import SignUpLink from "./sign-up-page-components/SignUpLink";
-import FormTitle from "../../common/components/form-components/form-title/FormTitle";
-import FormNavbar from "../../common/components/form-components/form-navbar/FormNavbar";
+import FormTitle from "../../common/form-components/form-title/FormTitle";
+import FormNavbar from "../../common/form-components/form-navbar/FormNavbar";
+import ProtectedPage from "../../common/protected-page/ProtectedPage";
 
 const SignUpPage: React.FC = () => {
   return (
-    <Box sx={{height:"100vh"}}>
+    <ProtectedPage isTokenRequired={false}>
       <FormNavbar />
       <Container
         component="main"
@@ -26,7 +27,7 @@ const SignUpPage: React.FC = () => {
             padding: "20px",
             border: "2px solid black",
             borderRadius: "10px",
-            marginTop:"64px"
+            marginTop: "64px",
           }}
         >
           <FormTitle title="הרשמה" />
@@ -34,7 +35,7 @@ const SignUpPage: React.FC = () => {
           <SignUpLink />
         </Box>
       </Container>
-    </Box>
+    </ProtectedPage>
   );
 };
 

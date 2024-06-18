@@ -1,14 +1,14 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SignUpPage from "./components/signup-page/SignUpPage";
 import RTLWrapper from "./common/wrappers/RTLWrapper";
-import LoginPage from "./components/login-page/LoginPage";
-import HomePage from "./components/home-page/HomePage";
 import AppRoutes from "./config/routes/AppRoutes";
 import { ThemeProvider } from "@mui/material";
 import theme from "./config/theme/AppTheme";
 import { useEffect } from "react";
 import { APP_NAME } from "./common/constant";
+import LoginPage from "./components/pages/login-page/LoginPage";
+import SignUpPage from "./components/pages/signup-page/SignUpPage";
+import HomePage from "./components/pages/home-page/HomePage";
 
 function configureHtmlFile() {
   document.body.style.backgroundColor = theme.palette.info.main;

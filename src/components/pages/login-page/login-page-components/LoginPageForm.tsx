@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, TextField, Box, CircularProgress } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import loginSchema from "../../../common/schemas/loginSchema";
-import useAuthForm from "../../../hooks/auth/useAuthForm";
-import APIRoutes from "../../../config/api/APIRoutes";
-import FormDetails from "../../../common/types/FormDetails";
+import { useNavigate } from "react-router-dom";
+import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
+import APIRoutes from "../../../../config/api/APIRoutes";
+import loginSchema from "../../../../common/schemas/loginSchema";
+import FormDetails from "../../../../common/types/FormDetails";
 
 const LoginPageForm: React.FC = () => {
-  const [statusCode, setStatusCode] = useState<number | undefined>(undefined);
-  const loginMutation = useAuthForm(APIRoutes.LOGIN, setStatusCode);
+  const [loginMutation, statusCode] = useAuthForm(APIRoutes.LOGIN);
   const {
     register,
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm({ resolver: yupResolver(loginSchema) });
-  
-  const onSubmit = (data: FormDetails) => {
-    loginMutation.mutate(data);
-  };
+    } = useForm({ resolver: yupResolver(loginSchema) });
+    
+    const onSubmit = (data: FormDetails) => {
+      loginMutation.mutate(data);
+    };
+    const navigate = useNavigate();
 
   useEffect(() => {
     switch (statusCode) {
+      case 200:
+        navigate("/")
+        break;
       case 401:
         setError("password", { type: "server", message: "סיסמא שגויה" });
         break;
