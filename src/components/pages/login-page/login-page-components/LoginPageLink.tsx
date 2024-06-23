@@ -6,7 +6,7 @@ const LoginPageLink: React.FC = () => {
   return (
     <>
       <Box alignSelf={"start"}>
-        <Link href={AppRoutes.REGISTER} variant="body2" color={"secondary"}>
+        <Link href={AppRoutes.REGISTER} variant="body2" color="common.black">
           {"?אין לך משתמש"}
         </Link>
       </Box>

@@ -6,7 +6,7 @@ const SignUpLink: React.FC = () => {
   return (
     <>
       <Box alignSelf={"start"}>
-        <Link href={AppRoutes.LOGIN} variant="body2" color={"secondary"}>
+        <Link href={AppRoutes.LOGIN} variant="body2" color="common.black">
           {"?כבר יש לך משתמש"}
         </Link>
       </Box>

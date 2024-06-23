@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const FormNavbar: React.FC = () => {
   return (
-    <AppBar color="info" elevation={0} sx={{position:"relative"}}>
+    <AppBar color="gray" elevation={0} sx={{position:"relative"}}>
       <Toolbar>
         <IconButton
           component={Link}

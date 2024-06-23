@@ -52,7 +52,7 @@ const SignUpForm: React.FC = () => {
         autoFocus
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
-        color="secondary"
+        color="black"
         {...register("username")}
       />
       <TextField
@@ -64,7 +64,7 @@ const SignUpForm: React.FC = () => {
         id="password"
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
-        color="secondary"
+        color="black"
         {...register("password")}
       />
       <TextField
@@ -76,18 +76,18 @@ const SignUpForm: React.FC = () => {
         id="confirmPassword"
         error={Boolean(errors.confirmPassword)}
         helperText={errors.confirmPassword?.message}
-        color="secondary"
+        color="black"
         {...register("confirmPassword")}
       />
       <Button
         type="submit"
-        color={registerMutation.isLoading ? "secondary" : "primary"}
+        color={registerMutation.isLoading ? "black" : "orange"}
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2, height: "40px" }}
       >
         {registerMutation.isLoading ? (
-          <CircularProgress color="inherit" size={24} />
+          <CircularProgress size={24} color="inherit" />
         ) : (
           "צור משתמש"
         )}

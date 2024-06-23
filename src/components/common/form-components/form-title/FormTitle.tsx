@@ -13,7 +13,7 @@ const FormTitle: React.FC<FormTitleProps> = ({title}:FormTitleProps) => {
     const theme = useTheme()
   return (
     <>
-      <Avatar sx={{ m: 1, bgcolor: theme.palette.secondary.main}}>
+      <Avatar sx={{ m: 1, bgcolor: theme.palette.black.main}}>
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5" dir="rtl" color={"warning"}>

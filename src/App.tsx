@@ -11,7 +11,7 @@ import SignUpPage from "./components/pages/signup-page/SignUpPage";
 import HomePage from "./components/pages/home-page/HomePage";
 
 function configureHtmlFile() {
-  document.body.style.backgroundColor = theme.palette.info.main;
+  document.body.style.backgroundColor = theme.palette.gray.main;
   document.title = APP_NAME;
 }
 function App() {

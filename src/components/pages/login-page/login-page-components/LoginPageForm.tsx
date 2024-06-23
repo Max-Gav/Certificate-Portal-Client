@@ -55,7 +55,7 @@ const LoginPageForm: React.FC = () => {
         autoFocus
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
-        color="secondary"
+        color="black"
         {...register("username")}
       />
       <TextField
@@ -67,18 +67,18 @@ const LoginPageForm: React.FC = () => {
         id="password"
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
-        color="secondary"
+        color="black"
         {...register("password")}
       />
       <Button
         type="submit"
-        color={loginMutation.isLoading ? "secondary" : "primary"}
+        color={loginMutation.isLoading ? "black" : "orange"}
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2, height: "40px" }}
       >
         {loginMutation.isLoading ? (
-          <CircularProgress color="inherit" size={24} />
+          <CircularProgress size={24} color="inherit"/>
         ) : (
           "התחברות"
         )}

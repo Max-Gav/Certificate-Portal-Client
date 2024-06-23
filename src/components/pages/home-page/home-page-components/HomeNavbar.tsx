@@ -7,6 +7,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import useLogout from "../../../../hooks/mutations/auth/useLogout";
 import { APP_NAME } from "../../../../common/constant";
+import theme from "../../../../config/theme/AppTheme";
 
 const HomeNavbar: React.FC = () => {
   const [logoutMutation, statusCode] = useLogout();
@@ -22,7 +23,7 @@ const HomeNavbar: React.FC = () => {
     }
   }, [statusCode]);
   return (
-    <AppBar color="secondary" elevation={0} sx={{ position: "relative" }}>
+    <AppBar elevation={0} sx={{ position: "relative", backgroundColor: theme.palette.black.dark }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
           {APP_NAME}
