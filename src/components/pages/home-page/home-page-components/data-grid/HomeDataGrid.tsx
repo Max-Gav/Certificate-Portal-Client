@@ -6,6 +6,7 @@ import DataGridToolbar from "./data-grid-components/DataGridToolbar";
 import columns from "./data-grid-utils/dataGridColumns";
 import rowParser from "./data-grid-utils/dataGridRowParser";
 import hebrewLocaleText from "./data-grid-utils/dataGridLocaleText";
+import DataGridPagination from "./data-grid-components/DataGridPagination";
 
 const HomeDataGrid: React.FC = () => {
   const { data, isLoading } = useGetCertificates();
@@ -27,7 +28,7 @@ const HomeDataGrid: React.FC = () => {
         <DataGrid
           rows={rows}
           columns={columns}
-          slots={{ toolbar: DataGridToolbar }}
+          slots={{ toolbar: DataGridToolbar, pagination: DataGridPagination }}
           initialState={{
             density: "standard",
             pagination: {
@@ -38,7 +39,7 @@ const HomeDataGrid: React.FC = () => {
           }}
           autoHeight={true}
           showCellVerticalBorder={true}
-          disableRowSelectionOnClick={true}
+          disableMultipleRowSelection={true}
           onDensityChange={(newDensity) => setDensity(newDensity)}
           density={density}
           localeText={hebrewLocaleText}
@@ -47,8 +48,8 @@ const HomeDataGrid: React.FC = () => {
           sx={{
             borderRadius: "15px",
             backgroundColor: "white",
-            
-            //  Remove Column Resizing 
+
+            //  Remove Column Resizing
             ".MuiDataGrid-columnSeparator": {
               display: "none",
             },
