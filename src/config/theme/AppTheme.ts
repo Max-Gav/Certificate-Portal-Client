@@ -51,10 +51,21 @@ theme = createTheme(theme, {
         },
       },
     },
-    DataGrid:{
+    MuiDataGrid:{
       styleOverrides: {
         root: {
-          fontWeight: "bolder"
+          '& .MuiDataGrid-columnHeaderTitle css-t89xny-MuiDataGrid-columnHeaderTitle': {
+            fontWeight: 'bold',
+            backgroundColor:"red"
+          },
+        },
+        row: {
+          "&.Mui-selected": {
+            backgroundColor: "#7CB9E8",
+            "&:hover": {
+              backgroundColor: "#6CB4EE"
+            }
+          }
         }
       }
     }
@@ -63,47 +74,23 @@ theme = createTheme(theme, {
     fontFamily: '"Trebuchet MS", "Arial", sans-serif',
   },
   palette: {
-    // primary:theme.palette.augmentColor({
-    //   color: {
-    //     main: '#DC5F00',
-    //     contrastText:"white"
-    //   },
-    //   name: 'primary',
-    // }),
-    // secondary: theme.palette.augmentColor({
-    //   color: {
-    //     main: '#373A40',
-    //     contrastText:"white"
-    //   },
-    //   name: 'secondary',
-    // }),
     error: theme.palette.augmentColor({
       color: {
         main: '#C62828',
       },
       name: 'error',
     }),
-    // warning:theme.palette.augmentColor({
-    //   color: {
-    //     main: '#F97300',
-    //   },
-    //   name: 'warning',
-    // }),
-    // success:theme.palette.augmentColor({
-    //   color: {
-    //     main: '#41B06E',
-    //   },
-    //   name: 'success',
-    // }),
     gray: theme.palette.augmentColor({
       color: {
-        main: '#EEEEEE',
+        main: "#EEEEEE",
       },
       name: 'gray',
     }),
     black: theme.palette.augmentColor({
       color: {
-        main: '#191919',
+        light: "#343434",
+        main: "#28282B",
+        dark:"#000000",
         contrastText:"white"
       },
       name: 'black',
