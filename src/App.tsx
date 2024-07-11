@@ -9,6 +9,7 @@ import { APP_NAME } from "./common/constant";
 import LoginPage from "./components/pages/login-page/LoginPage";
 import SignUpPage from "./components/pages/signup-page/SignUpPage";
 import HomePage from "./components/pages/home-page/HomePage";
+import GlobalToastContainer from "./components/common/global-toast-container/GlobalToastContainer";
 
 function configureHtmlFile() {
   document.body.style.backgroundColor = theme.palette.gray.main;
@@ -32,6 +33,7 @@ function App() {
           <Route index element={<HomePage />} />
         </Routes>
       </BrowserRouter>
+      <GlobalToastContainer/>
     </ThemeProvider>
   );
 }

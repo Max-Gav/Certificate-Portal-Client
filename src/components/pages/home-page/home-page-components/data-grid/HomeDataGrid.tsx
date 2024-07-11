@@ -10,6 +10,7 @@ import DataGridPagination from "./data-grid-components/DataGridPagination";
 
 const HomeDataGrid: React.FC = () => {
   const { data, isLoading } = useGetCertificates();
+  const [extendTools, setExtendTools] = React.useState<Boolean>(false);
   const [density, setDensity] = React.useState<GridDensity>("standard");
   const rows = rowParser(data);
 
@@ -29,6 +30,7 @@ const HomeDataGrid: React.FC = () => {
           rows={rows}
           columns={columns}
           slots={{ toolbar: DataGridToolbar, pagination: DataGridPagination }}
+          slotProps={{ toolbar: { extendTools } }}
           initialState={{
             density: "standard",
             pagination: {
@@ -39,11 +41,20 @@ const HomeDataGrid: React.FC = () => {
           }}
           autoHeight={true}
           showCellVerticalBorder={true}
-          disableMultipleRowSelection={true}
           onDensityChange={(newDensity) => setDensity(newDensity)}
           density={density}
           localeText={hebrewLocaleText}
           pageSizeOptions={[5, 10, 15]}
+          disableMultipleRowSelection={true}
+          onRowSelectionModelChange={(rowSelectionModel, details) => {
+            console.log(rowSelectionModel, details);
+            setExtendTools(rowSelectionModel.length > 0);
+            if (rowSelectionModel.length > 0) {
+              setExtendTools(true);
+            } else {
+              setExtendTools(false);
+            }
+          }}
           className="elevated-element"
           sx={{
             borderRadius: "15px",

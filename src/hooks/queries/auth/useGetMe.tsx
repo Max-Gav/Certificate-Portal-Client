@@ -12,9 +12,9 @@ const useGetMe = () => {
         .then((response) => response.data);
     },
 
-    onSettled: (data, error) => {
-      console.log(data);
-      console.log(error);
+    onSettled: () => {
+      // console.log(data);
+      // console.log(error);
     },
     retry: false,
   });

@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import useGetMe from "../../../hooks/queries/auth/useGetMe";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface ProtectedPageProps {
   children: ReactNode;
@@ -9,17 +10,21 @@ interface ProtectedPageProps {
 
 const ProtectedPage: React.FC<ProtectedPageProps> = ({
   children,
-  isTokenRequired
+  isTokenRequired,
 }) => {
   const navigate = useNavigate();
   const { isSuccess, isError } = useGetMe();
-  if (isTokenRequired && isError) {
-    navigate("/login");
-  }else if (!isTokenRequired && isSuccess){
-    navigate("/")
-  }
+  const notify = (message: string) => toast.info(message, {position:"bottom-right", });
 
-  return children;
+  if (isTokenRequired && isError) {
+    notify("יש להתחבר על מנת לעבור לעמוד הבית")
+    navigate("/login");
+  } else if (!isTokenRequired && isSuccess) {
+    notify("משתמש כבר מחובר למערכת")
+    navigate("/");
+  } else {
+    return children;
+  }
 };
 
 export default ProtectedPage;

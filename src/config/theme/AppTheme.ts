@@ -61,7 +61,7 @@ theme = createTheme(theme, {
         },
         row: {
           "&.Mui-selected": {
-            backgroundColor: "#7CB9E8",
+            backgroundColor: "#89CFF0",
             "&:hover": {
               backgroundColor: "#6CB4EE"
             }

@@ -1,6 +1,6 @@
-import { Certificate } from "../../../../../../common/types/Certificate";
+import { CertificateElement } from "../../../../../../common/types/Certificate Types/CertificateElement";
 
-const rowParser = (data: Certificate[] | undefined) => {
+const rowParser = (data: CertificateElement[] | undefined) => {
   return data
     ? data.map((item) => ({
         id: item.id,

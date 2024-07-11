@@ -5,10 +5,13 @@ const hebrewLocaleText = {
   toolbarDensityCompact: "קומפקטי",
   toolbarDensityStandard: "סטנדרטי",
   toolbarDensityComfortable: "נוח",
-  toolbarFilters: "סנן",
-  toolbarColumns: "עמודות",
-  footerRowSelected:(count: number)=>count + " :מספר השורות שנבחרו",
-  
+  toolbarFilters: "סינון ערכים",
+  toolbarFiltersLabel: "סינון ערכים",
+  toolbarColumns: "בחירת עמודות",
+  toolbarColumnsLabel: "בחירת עמודות",
+  footerRowSelected: (count: number) =>
+    true ? "" : count + " :מספר השורות שנבחרו",
+
   // Column Locale Text
   columnHeaderSortIconLabel: "סדר",
   columnMenuLabel: "תפריט אפשרויות",
@@ -40,7 +43,6 @@ const hebrewLocaleText = {
   columnsManagementShowHideAllText: "להראות/להסתיר את כולם",
   columnsManagementSearchTitle: "חיפוש עמודה",
   columnsManagementNoColumns: "לא נמצאו עמודות",
-
 };
 
 export default hebrewLocaleText;

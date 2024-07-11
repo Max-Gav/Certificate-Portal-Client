@@ -1,96 +1,37 @@
+import DeleteIcon from "@mui/icons-material/Delete";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
+  Box,
+  Collapse,
+  IconButton,
   ThemeProvider,
   Typography,
-  createTheme,
-  Box,
-  IconButton,
-  Collapse,
 } from "@mui/material";
 import {
   GridToolbarColumnsButton,
   GridToolbarContainer,
   GridToolbarDensitySelector,
   GridToolbarFilterButton,
+  GridToolbarProps,
+  ToolbarPropsOverrides,
 } from "@mui/x-data-grid";
-import theme from "../../../../../../config/theme/AppTheme";
-import { APP_NAME } from "../../../../../../common/constant";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import AddIcon from "@mui/icons-material/Add";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import React from "react";
+import { APP_NAME } from "../../../../../../common/constant";
+import theme from "../../../../../../config/theme/AppTheme";
+import AddCertificateButton from "./data-grid-toolbar-utils/AddCertificateButton";
+import CreateCertificateButton from "./data-grid-toolbar-utils/CreateCertificateButton";
+import {
+  whiteToolbarButtons,
+  toolbarTheme,
+} from "./data-grid-toolbar-utils/DataGridToolbarTheme";
+import EditCertificateButton from "./data-grid-toolbar-utils/EditCertificateButton";
 
 const PADDING_SIZE = "15px";
 
-declare module "@mui/material/styles" {
-  interface Palette {
-    white: Palette["primary"];
-  }
-
-  interface PaletteOptions {
-    white?: PaletteOptions["primary"];
-  }
-}
-
-declare module "@mui/material/IconButton" {
-  interface IconButtonPropsColorOverrides {
-    white: true
-  }
-}
-
-let toolbarTheme = createTheme({});
-
-toolbarTheme = createTheme(toolbarTheme, {
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          color: "white"
-        },
-      },
-    },
-  },
-  palette: {
-    primary: theme.palette.augmentColor({
-      color: {
-        main: "#5DADE2",
-        contrastText: "white",
-      },
-      name: "primary",
-    }),
-    secondary: theme.palette.augmentColor({
-      color: {
-        main: "#F39C12",
-        contrastText: "white",
-      },
-      name: "secondary",
-    }),
-    success: theme.palette.augmentColor({
-      color: {
-        main: "#2ECC71",
-        contrastText: "white",
-      },
-      name: "success",
-    }),
-    error: theme.palette.augmentColor({
-      color: {
-        main: "#E74C3C",
-        contrastText: "white",
-      },
-      name: "error",
-    }),
-    white: theme.palette.augmentColor({
-      color:{
-        main: "#FFFFFF",
-      },
-      name:"white",
-    })
-  },
-});
-
-const DataGridToolbar: React.FC = () => {
+const DataGridToolbar: React.FC<GridToolbarProps & ToolbarPropsOverrides> = ({
+  extendTools,
+}: GridToolbarProps & ToolbarPropsOverrides) => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
 
   return (
@@ -125,18 +66,16 @@ const DataGridToolbar: React.FC = () => {
                 gap: "1",
               }}
             >
-              <IconButton color="success" size="small">
-                <AddIcon fontSize="small" />
-              </IconButton>
-              <IconButton color="secondary" size="small">
-                <FileUploadIcon fontSize="small" />
-              </IconButton>
-              <IconButton color="primary" size="small">
-                <ModeEditIcon fontSize="small" />
-              </IconButton>
-              <IconButton color="error" size="small">
-                <DeleteIcon fontSize="small" />
-              </IconButton>
+              <CreateCertificateButton />
+              <AddCertificateButton />
+              {extendTools && (
+                <>
+                  <EditCertificateButton/>
+                  <IconButton color="error" size="small">
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </>
+              )}
             </Box>
           </Collapse>
           <IconButton
@@ -153,9 +92,11 @@ const DataGridToolbar: React.FC = () => {
           </IconButton>
         </Box>
         <Box>
-          <GridToolbarDensitySelector />
-          <GridToolbarColumnsButton />
-          <GridToolbarFilterButton />
+          <ThemeProvider theme={whiteToolbarButtons}>
+            <GridToolbarDensitySelector />
+            <GridToolbarColumnsButton />
+            <GridToolbarFilterButton />
+          </ThemeProvider>
         </Box>
       </ThemeProvider>
     </GridToolbarContainer>

@@ -44,7 +44,6 @@ const LoginPageForm: React.FC = () => {
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{ mt: 1 }}
-      dir="rtl"
     >
       <TextField
         margin="normal"
@@ -52,6 +51,7 @@ const LoginPageForm: React.FC = () => {
         fullWidth
         id="username"
         label="שם משתמש"
+        type="text"
         autoFocus
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
