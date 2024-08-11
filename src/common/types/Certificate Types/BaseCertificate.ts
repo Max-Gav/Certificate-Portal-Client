@@ -1,5 +1,5 @@
 export default interface BaseCertificate{
     common_name: string;
-    subject_alternative_names: string[];
-    expiration_date: string | undefined;
+    domain_names: string[];
+    ip_addresses: string[];
   }

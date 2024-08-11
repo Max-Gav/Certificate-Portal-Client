@@ -1,4 +1,4 @@
-export default interface FormDetails {
+export default interface AuthFormDetails {
     username: string;
     password: string;
   }

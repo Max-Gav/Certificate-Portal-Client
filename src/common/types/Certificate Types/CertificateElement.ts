@@ -4,4 +4,5 @@ export interface CertificateElement extends BaseCertificate {
     id: string;
     cert_name: string;
     user_id: string;
+    expiration_date: string;
   }

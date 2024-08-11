@@ -1,5 +1,5 @@
 import BaseCertificate from "./BaseCertificate";
 
-export default interface AddCertificate extends BaseCertificate {
+export default interface AddCertificateData extends BaseCertificate {
   cert_name: string;
 }
