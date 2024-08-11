@@ -1,7 +1,8 @@
 import { IconButton } from "@mui/material";
 import React from "react";
-import AddCertificateDialog from "../../../../../../common/certificates-dialog/AddCertificateDialog";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import AddCertificateDialog from "../../../../../../common/certificates-dialogs/Add Certificate Dialog/AddCertificateDialog";
+import AddCertificateData from "../../../../../../../common/types/Certificate Types/AddCertificateData";
 
 const AddCertificateButton: React.FC = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -13,12 +14,7 @@ const AddCertificateButton: React.FC = () => {
   const handleDialogClose = () => {
     setDialogOpen(false);
   };
-  const handleCertSubmit = (cert: {
-    cert_name: string;
-    common_name: string;
-    subject_alternative_names: string[];
-    expiration_date: string | undefined;
-  }) => {
+  const handleCertSubmit = (cert: AddCertificateData) => {
     console.log("Certificate submitted:", cert);
   };
   return (
