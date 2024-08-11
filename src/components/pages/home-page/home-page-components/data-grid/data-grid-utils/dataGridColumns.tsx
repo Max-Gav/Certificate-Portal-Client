@@ -17,7 +17,7 @@ let columns: GridColDef[] = [
     flex: 150,
   },
   {
-    field: "subject_alternative_names",
+    field: "domain_names",
     headerName: "שמות חלופיים",
     flex: 300,
     renderCell: (params) => params.value.join(", "),
