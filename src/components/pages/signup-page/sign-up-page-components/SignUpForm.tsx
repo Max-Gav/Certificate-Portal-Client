@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import registerSchema from "../../../../common/schemas/registerSchema";
-import FormDetails from "../../../../common/types/FormDetails";
+import AuthFormDetails from "../../../../common/types/AuthFormDetails";
 
 const SignUpForm: React.FC = () => {
   const [registerMutation, statusCode] = useAuthForm(APIRoutes.REGISTER);
@@ -17,7 +17,7 @@ const SignUpForm: React.FC = () => {
     setError,
   } = useForm({ resolver: yupResolver(registerSchema) });
 
-  const onSubmit = (data: FormDetails) => {
+  const onSubmit = (data: AuthFormDetails) => {
     registerMutation.mutate(data);
   };
   const navigate = useNavigate();
@@ -74,10 +74,10 @@ const SignUpForm: React.FC = () => {
         label="אשר סיסמא"
         type="password"
         id="confirmPassword"
-        error={Boolean(errors.confirmPassword)}
-        helperText={errors.confirmPassword?.message}
+        error={Boolean(errors.confirm_password)}
+        helperText={errors.confirm_password?.message}
         color="black"
-        {...register("confirmPassword")}
+        {...register("confirm_password")}
       />
       <Button
         type="submit"

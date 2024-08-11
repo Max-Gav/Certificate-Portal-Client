@@ -1,18 +1,19 @@
 import axiosInstance from "../../../config/api/api";
 import { AxiosError, AxiosResponse } from "axios";
-import FormDetails from "../../../common/types/FormDetails";
 import { useMutation } from "react-query";
 import { useState } from "react";
+import AuthFormDetails from "../../../common/types/AuthFormDetails";
 
 const useAuthForm = (apiRoute: string) => {
   const [statusCode, setStatusCode] = useState<number | undefined>(undefined);
 
   const mutation = useMutation({
-    mutationFn: (variables: FormDetails) => {
-      return axiosInstance.post(apiRoute, {
-        username: variables.username,
-        password: btoa(variables.password),
-      });
+    mutationFn: (authFormDetails: AuthFormDetails) => {
+      const requestBody = {
+        username: authFormDetails.username,
+        password: btoa(authFormDetails.password),
+      }
+      return axiosInstance.post(apiRoute, requestBody);
     },
     onSuccess: (data: AxiosResponse) => {
       setStatusCode(data?.status);

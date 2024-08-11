@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import loginSchema from "../../../../common/schemas/loginSchema";
-import FormDetails from "../../../../common/types/FormDetails";
+import AuthFormDetails from "../../../../common/types/AuthFormDetails";
 
 const LoginPageForm: React.FC = () => {
   const [loginMutation, statusCode] = useAuthForm(APIRoutes.LOGIN);
@@ -17,7 +17,7 @@ const LoginPageForm: React.FC = () => {
     setError,
     } = useForm({ resolver: yupResolver(loginSchema) });
     
-    const onSubmit = (data: FormDetails) => {
+    const onSubmit = (data: AuthFormDetails) => {
       loginMutation.mutate(data);
     };
     const navigate = useNavigate();
