@@ -2,7 +2,7 @@ import axiosInstance from "../../../config/api/api";
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation } from "react-query";
 import { useState } from "react";
-import AuthFormDetails from "../../../common/types/AuthFormDetails";
+import AuthFormDetails from "../../../common/types/Authentication Types/AuthFormDetails";
 
 const useAuthForm = (apiRoute: string) => {
   const [statusCode, setStatusCode] = useState<number | undefined>(undefined);

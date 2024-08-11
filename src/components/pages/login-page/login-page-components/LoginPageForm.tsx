@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import loginSchema from "../../../../common/schemas/loginSchema";
-import AuthFormDetails from "../../../../common/types/AuthFormDetails";
+import AuthFormDetails from "../../../../common/types/Authentication Types/AuthFormDetails";
 
 const LoginPageForm: React.FC = () => {
   const [loginMutation, statusCode] = useAuthForm(APIRoutes.LOGIN);

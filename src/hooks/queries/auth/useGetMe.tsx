@@ -1,7 +1,7 @@
 import axiosInstance from "../../../config/api/api";
 import { useQuery } from "react-query";
 import APIRoutes from "../../../config/api/APIRoutes";
-import TokenPayload from "../../../common/types/TokenPayload";
+import TokenPayload from "../../../common/types/General Types/TokenPayload";
 
 const useGetMe = () => {
   return useQuery<TokenPayload, Error>({

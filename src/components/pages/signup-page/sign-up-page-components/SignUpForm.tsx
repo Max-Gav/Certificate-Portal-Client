@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import registerSchema from "../../../../common/schemas/registerSchema";
-import AuthFormDetails from "../../../../common/types/AuthFormDetails";
+import AuthFormDetails from "../../../../common/types/Authentication Types/AuthFormDetails";
 
 const SignUpForm: React.FC = () => {
   const [registerMutation, statusCode] = useAuthForm(APIRoutes.REGISTER);
