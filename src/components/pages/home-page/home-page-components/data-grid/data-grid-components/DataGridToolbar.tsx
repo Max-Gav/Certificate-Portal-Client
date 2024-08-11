@@ -17,7 +17,7 @@ import {
   ToolbarPropsOverrides,
 } from "@mui/x-data-grid";
 import React from "react";
-import { APP_NAME } from "../../../../../../common/constant";
+import { APP_NAME } from "../../../../../../common/constants";
 import theme from "../../../../../../config/theme/AppTheme";
 import AddCertificateButton from "./data-grid-toolbar-utils/AddCertificateButton";
 import CreateCertificateButton from "./data-grid-toolbar-utils/CreateCertificateButton";

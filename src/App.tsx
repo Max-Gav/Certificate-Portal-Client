@@ -5,7 +5,7 @@ import AppRoutes from "./config/routes/AppRoutes";
 import { ThemeProvider } from "@mui/material";
 import theme from "./config/theme/AppTheme";
 import { useEffect } from "react";
-import { APP_NAME } from "./common/constant";
+import { APP_NAME } from "./common/constants";
 import LoginPage from "./components/pages/login-page/LoginPage";
 import SignUpPage from "./components/pages/signup-page/SignUpPage";
 import HomePage from "./components/pages/home-page/HomePage";

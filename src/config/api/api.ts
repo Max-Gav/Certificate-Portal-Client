@@ -1,7 +1,7 @@
 import axios from "axios";
-import { HOST_BASE_URL } from "../../common/constant";
+import { API_SERVER_URL } from "../../common/constants";
 
 export default axios.create({
-    baseURL: HOST_BASE_URL,
+    baseURL: API_SERVER_URL,
     withCredentials: true,
 })

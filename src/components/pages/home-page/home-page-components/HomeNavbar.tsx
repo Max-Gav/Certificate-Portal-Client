@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import useLogout from "../../../../hooks/mutations/auth/useLogout";
-import { APP_NAME } from "../../../../common/constant";
+import { APP_NAME } from "../../../../common/constants";
 import theme from "../../../../config/theme/AppTheme";
 
 const HomeNavbar: React.FC = () => {
