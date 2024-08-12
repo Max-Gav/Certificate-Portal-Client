@@ -7,9 +7,11 @@ import columns from "./data-grid-utils/dataGridColumns";
 import rowParser from "./data-grid-utils/dataGridRowParser";
 import hebrewLocaleText from "./data-grid-utils/dataGridLocaleText";
 import DataGridPagination from "./data-grid-components/DataGridPagination";
+import onRowSelection from "./data-grid-utils/dataGridOnRowSelection";
 
 const HomeDataGrid: React.FC = () => {
   const { data, isLoading } = useGetCertificates();
+  const [selectedRowId, setSelectedRowId] = React.useState<string>("false");
   const [extendTools, setExtendTools] = React.useState<Boolean>(false);
   const [density, setDensity] = React.useState<GridDensity>("standard");
   const rows = rowParser(data);
@@ -46,14 +48,12 @@ const HomeDataGrid: React.FC = () => {
           localeText={hebrewLocaleText}
           pageSizeOptions={[5, 10, 15]}
           disableMultipleRowSelection={true}
-          onRowSelectionModelChange={(rowSelectionModel, details) => {
-            console.log(rowSelectionModel, details);
-            setExtendTools(rowSelectionModel.length > 0);
-            if (rowSelectionModel.length > 0) {
-              setExtendTools(true);
-            } else {
-              setExtendTools(false);
-            }
+          onRowSelectionModelChange={(rowSelectionModel) => {
+            onRowSelection(
+              rowSelectionModel,
+              setSelectedRowId,
+              setExtendTools
+            );
           }}
           className="elevated-element"
           sx={{
