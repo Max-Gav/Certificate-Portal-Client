@@ -7,7 +7,7 @@ type SelectedCertificateIdProviderProps = {
 
 type TSelectedCertificateIdContext = {
   selectedCertificateId: string;
-  setSelectedCertificateId: (certificateId: string) => void;
+  setSelectedCertificateId: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const SelectedCertificateIdContext =
