@@ -1,8 +1,7 @@
 import { IconButton } from "@mui/material";
 import React from "react";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import EditCertificateDialog from "../../../../../../common/certificates-dialogs/Edit Certificate Dialog/EditCertificateDialog";
-import EditCertificateData from "../../../../../../../common/types/Certificate Types/EditCertificateData";
+import EditCertificateDialog from "../../../../../../../common/certificates-dialogs/Edit Certificate Dialog/EditCertificateDialog";
 
 const EditCertificateButton: React.FC = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -14,9 +13,6 @@ const EditCertificateButton: React.FC = () => {
   const handleDialogClose = () => {
     setDialogOpen(false);
   };
-  const handleCertSubmit = (cert: EditCertificateData) => {
-    console.log("Certificate submitted:", cert);
-  };
   return (
     <>
       <IconButton color="primary" size="small" onClick={handleDialogOpen}>
@@ -26,7 +22,6 @@ const EditCertificateButton: React.FC = () => {
       <EditCertificateDialog
         open={dialogOpen}
         onClose={handleDialogClose}
-        onSubmit={handleCertSubmit}
       />
     </>
   );

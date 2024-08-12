@@ -1,8 +1,8 @@
 import { IconButton } from "@mui/material";
 import React from "react";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
-import AddCertificateDialog from "../../../../../../common/certificates-dialogs/Add Certificate Dialog/AddCertificateDialog";
-import AddCertificateData from "../../../../../../../common/types/Certificate Types/AddCertificateData";
+import AddCertificateDialog from "../../../../../../../common/certificates-dialogs/Add Certificate Dialog/AddCertificateDialog";
+import AddCertificateData from "../../../../../../../../common/types/Certificate Types/AddCertificateData";
 
 const AddCertificateButton: React.FC = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);

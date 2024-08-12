@@ -2,7 +2,7 @@ import React from "react";
 import { DataGrid, GridDensity } from "@mui/x-data-grid";
 import { CircularProgress, Container } from "@mui/material";
 import useGetCertificates from "../../../../../hooks/queries/certificates/useGetCertificates";
-import DataGridToolbar from "./data-grid-components/DataGridToolbar";
+import DataGridToolbar from "./data-grid-components/data-grid-toolbar/DataGridToolbar";
 import columns from "./data-grid-utils/dataGridColumns";
 import rowParser from "./data-grid-utils/dataGridRowParser";
 import hebrewLocaleText from "./data-grid-utils/dataGridLocaleText";
