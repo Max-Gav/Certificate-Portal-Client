@@ -21,18 +21,18 @@ import theme from "../../../../config/theme/AppTheme";
 import createCertificateSchema from "../../../../common/schemas/createCertificateSchema.";
 import DialogSanFieldProps from "../../../../common/types/Dialog Types/DialogSanFieldProps";
 import CreateCertificateData from "../../../../common/types/Certificate Types/CreateCertificateData";
-import useCreateCertificate from "../../../../hooks/mutations/auth/useCreateCertificate";
+import useCertificateRequest from "../../../../hooks/mutations/certificates/useCertificateRequest";
 import {
   handleSanDelete,
   handleSanInputChange,
   handleSanKeyPress,
   textFields,
 } from "./createCertificateDialogUtils";
+import APIRoutes from "../../../../config/api/APIRoutes";
 
 interface CreateCertificateDialogProps {
   open: boolean;
   onClose: () => void;
-  onSubmit: (cert: CreateCertificateData) => void;
 }
 
 const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
@@ -49,7 +49,7 @@ const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
   } = useForm({
     resolver: yupResolver(createCertificateSchema),
   });
-  const [createCertificateMutation, statusCode] = useCreateCertificate();
+  const [createCertificateMutation, statusCode] = useCertificateRequest(APIRoutes.CREATE_CERTIFICATE, "POST");
   const [domainNameInput, setDomainNameInput] = useState<string>("");
   const [ipAddressInput, setIpAddressInput] = useState<string>("");
   const [isDomainNameValid, setDomainNameValid] = useState<boolean>(true);
@@ -96,8 +96,6 @@ const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
         <Box
           component={"form"}
           onSubmit={handleSubmit((data) => {
-            console.log(data);
-
             onSubmit(data);
           })}
         >
