@@ -9,10 +9,11 @@ const useAuthForm = (apiRoute: string) => {
 
   const mutation = useMutation({
     mutationFn: (authFormDetails: AuthFormDetails) => {
+      setStatusCode(undefined);
       const requestBody = {
         username: authFormDetails.username,
         password: btoa(authFormDetails.password),
-      }
+      };
       return axiosInstance.post(apiRoute, requestBody);
     },
     onSuccess: (data: AxiosResponse) => {

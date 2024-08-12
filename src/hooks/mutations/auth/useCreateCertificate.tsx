@@ -11,6 +11,7 @@ const useCreateCertificate = () => {
 
   const mutation = useMutation({
     mutationFn: (certificateData: CreateCertificateData) => {
+      setStatusCode(undefined);
       return axiosInstance.post(apiRoute, certificateData);
     },
     onSuccess: (data: AxiosResponse) => {
