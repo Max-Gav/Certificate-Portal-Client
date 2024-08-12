@@ -75,7 +75,6 @@ const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
   ];
   const onSubmit = (certificateData: CreateCertificateData) => {
     createCertificateMutation.mutate(certificateData);
-    onClose();
   };
 
   return (
