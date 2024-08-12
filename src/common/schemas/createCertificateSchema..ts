@@ -8,7 +8,7 @@ const createCertificateSchema = yup.object().shape({
     .string()
     .min(2, CA_NAME_MIN)
     .max(16, "שם התעודה צריך להיות באורך 16 תווים לכל יותר")
-    .required("הכנס שם משתמש"),
+    .required("הכנס שם תעודה"),
   country_name: yup
     .string()
     .required("הכנס קוד מדינה")
