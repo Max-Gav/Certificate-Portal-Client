@@ -2,7 +2,7 @@ import React from "react";
 import HomeNavbar from "./home-page-components/HomeNavbar";
 import HomeDataGrid from "./home-page-components/data-grid/HomeDataGrid";
 import ProtectedPage from "../../common/protected-page/ProtectedPage";
-import SelectedCertificateIdProvider from "../../../hooks/context/selected-certificate-row/SelectedCertificateIdProvider";
+import DialogManagerProvider from "../../../hooks/context/selected-certificate-row/DialogManagerProvider";
 
 const HomePage: React.FC = () => {
   return (
@@ -17,9 +17,9 @@ const HomePage: React.FC = () => {
           <Button variant="contained">{"התחברות"} </Button>
         </Link>
       </Box> */}
-        <SelectedCertificateIdProvider>
+        <DialogManagerProvider>
           <HomeDataGrid />
-        </SelectedCertificateIdProvider>
+        </DialogManagerProvider>
       </ProtectedPage>
     </>
   );
