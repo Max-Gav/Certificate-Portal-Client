@@ -13,7 +13,7 @@ const useCertificateRequest = <T,>(apiRoute: string, method: "POST" | "PATCH" | 
       return axiosInstance.request({
         url: apiRoute,
         method: method,
-        data: method !== "DELETE" ? data : undefined,
+        data: data ? data : undefined,
       });
     },
     onSuccess: (data: AxiosResponse) => {
