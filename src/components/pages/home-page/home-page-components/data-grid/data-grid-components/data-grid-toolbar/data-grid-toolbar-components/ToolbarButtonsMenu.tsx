@@ -1,21 +1,26 @@
-import { Box, Collapse, Typography } from "@mui/material";
-import React from "react";
-import { APP_NAME } from "../../../../../../../../common/constants";
+import { Box, Collapse } from "@mui/material";
+import React, { useState } from "react";
 import theme from "../../../../../../../../config/theme/AppTheme";
-import CreateCertificateButton from "./CreateCertificateButton";
-import AddCertificateButton from "./AddCertificateButton";
-import EditCertificateButton from "./EditCertificateButton";
-import DeleteCertificateButton from "./DeleteCertificateButton";
 import ToolbarMenuArrowButton from "./ToolbarMenuArrowButton";
+import DialogButton from "./DialogButton";
+import DialogName from "../../../../../../../../common/types/Dialog Types/DialogName";
 
 type ToolbarButtonsMenuProps = {
   extendTools: boolean;
 };
 
-const ToolbarButtonsMenu: React.FC<ToolbarButtonsMenuProps> = ({extendTools}) => {
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
-  console.log(extendTools);
-  
+const buttonConfigs = [
+  { dialogName: "Create" as DialogName },
+  { dialogName: "Add" as DialogName },
+  { dialogName: "Edit" as DialogName, extendToolsRequired: true },
+  { dialogName: "Delete" as DialogName, extendToolsRequired: true },
+];
+
+const ToolbarButtonsMenu: React.FC<ToolbarButtonsMenuProps> = ({
+  extendTools,
+}) => {
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
+
   return (
     <>
       <Collapse in={isMenuOpen} orientation="horizontal">
@@ -28,14 +33,14 @@ const ToolbarButtonsMenu: React.FC<ToolbarButtonsMenuProps> = ({extendTools}) =>
             gap: "1",
           }}
         >
-          <CreateCertificateButton />
-          <AddCertificateButton />
-          {extendTools && (
-            <>
-              <EditCertificateButton />
-              <DeleteCertificateButton />
-            </>
-          )}
+          {buttonConfigs.map(({ dialogName, extendToolsRequired }) => (
+            <DialogButton
+              key={dialogName}
+              dialogName={dialogName}
+              extendTools={extendTools}
+              extendToolsRequired={extendToolsRequired}
+            />
+          ))}
         </Box>
       </Collapse>
       <ToolbarMenuArrowButton
