@@ -14,6 +14,7 @@ import onRowSelection from "./data-grid-utils/dataGridOnRowSelection";
 import rowParser from "./data-grid-utils/dataGridRowParser";
 import DialogName from "../../../../../common/types/Dialog Types/DialogName";
 import { useCurrentDialog, useIsDialogOpen } from "../../../../../hooks/context/selected-certificate-row/useDialogManager";
+import DeleteCertificateDialog from "../../../../common/certificates-dialogs/Delete Certificate Dialog/DeleteCertificateDialog";
 
 const dialogComponentMap: Record<
   DialogName,
@@ -23,7 +24,7 @@ const dialogComponentMap: Record<
   Create: CreateCertificateDialog,
   Add: AddCertificateDialog,
   Edit: EditCertificateDialog,
-  Delete: () => <></>
+  Delete: DeleteCertificateDialog
 };
 
 const HomeDataGrid: React.FC = () => {
