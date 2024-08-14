@@ -2,10 +2,10 @@ import axiosInstance from "../../../config/api/api";
 import { AxiosResponse } from "axios";
 import { useMutation } from "react-query";
 import APIRoutes from "../../../config/api/APIRoutes";
-import { useState } from "react";
+import { useStateIfMounted } from "use-state-if-mounted";
 
 const useLogout = () => {
-  const [statusCode, setStatusCode] = useState<number | undefined>(undefined);
+  const [statusCode, setStatusCode] = useStateIfMounted<number | undefined>(undefined);
 
   const mutation = useMutation({
     mutationFn: () => {

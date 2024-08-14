@@ -1,11 +1,11 @@
 import axiosInstance from "../../../config/api/api";
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation } from "react-query";
-import { useState } from "react";
 import AuthFormDetails from "../../../common/types/Authentication Types/AuthFormDetails";
+import { useStateIfMounted } from "use-state-if-mounted";
 
 const useAuthForm = (apiRoute: string) => {
-  const [statusCode, setStatusCode] = useState<number | undefined>(undefined);
+  const [statusCode, setStatusCode] = useStateIfMounted<number | undefined>(undefined);
 
   const mutation = useMutation({
     mutationFn: (authFormDetails: AuthFormDetails) => {

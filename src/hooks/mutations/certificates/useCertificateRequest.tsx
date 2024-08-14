@@ -1,10 +1,10 @@
 import axiosInstance from "../../../config/api/api";
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQueryClient } from "react-query";
-import { useState } from "react";
+import { useStateIfMounted } from "use-state-if-mounted";
 
 const useCertificateRequest = <T,>(apiRoute: string, method: "POST" | "PATCH" | "DELETE") => {
-  const [statusCode, setStatusCode] = useState<number | undefined>(undefined);
+  const [statusCode, setStatusCode] = useStateIfMounted<number | undefined>(undefined);
   const queryClient = useQueryClient();
   
   const mutation = useMutation({
