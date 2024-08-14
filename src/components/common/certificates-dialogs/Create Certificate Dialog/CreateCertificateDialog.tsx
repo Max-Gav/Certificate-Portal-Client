@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/LocalizationProvider";
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
@@ -29,13 +28,9 @@ import {
   textFields,
 } from "./createCertificateDialogUtils";
 import APIRoutes from "../../../../config/api/APIRoutes";
+import { CertificateDialogProps } from "../../../../common/types/Dialog Types/DialogProps";
 
-interface CreateCertificateDialogProps {
-  open: boolean;
-  onClose: () => void;
-}
-
-const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
+const CreateCertificateDialog: React.FC<CertificateDialogProps> = ({
   open,
   onClose,
 }) => {
@@ -49,7 +44,10 @@ const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
   } = useForm({
     resolver: yupResolver(createCertificateSchema),
   });
-  const [createCertificateMutation, statusCode] = useCertificateRequest(APIRoutes.CREATE_CERTIFICATE, "POST");
+  const [createCertificateMutation, statusCode] = useCertificateRequest(
+    APIRoutes.CREATE_CERTIFICATE,
+    "POST"
+  );
   const [domainNameInput, setDomainNameInput] = useState<string>("");
   const [ipAddressInput, setIpAddressInput] = useState<string>("");
   const [isDomainNameValid, setDomainNameValid] = useState<boolean>(true);
@@ -124,7 +122,7 @@ const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
                   {...field}
                   value={field.value ? dayjs(field.value) : null}
                   onChange={(date) => field.onChange(date?.toDate())}
-                  minDate={dayjs().add(1, 'day')}
+                  minDate={dayjs().add(1, "day")}
                   slotProps={{
                     textField: {
                       margin: "dense",
@@ -159,7 +157,7 @@ const CreateCertificateDialog: React.FC<CreateCertificateDialogProps> = ({
                   isFieldValid = isIpAddressValid;
                   helperText = isIpAddressValid
                     ? "Enter הוספה בלחיצה על"
-                    : "תקינה IP הכנס כתובת"
+                    : "תקינה IP הכנס כתובת";
                 }
                 return (
                   <>
