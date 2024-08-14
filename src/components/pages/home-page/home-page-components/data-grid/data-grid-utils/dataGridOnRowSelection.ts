@@ -5,7 +5,9 @@ const onRowSelection = (
   setSelectedCertificateId: (certificateId: string) => void,
   setExtendTools: (extendTools: boolean) => void
 ) => {
-  const certificateId = rowSelectionModel[0] as string;
+  const certificateId = rowSelectionModel[0]
+    ? (rowSelectionModel[0] as string)
+    : "";
   setSelectedCertificateId(certificateId);
 
   setExtendTools(rowSelectionModel.length > 0);
