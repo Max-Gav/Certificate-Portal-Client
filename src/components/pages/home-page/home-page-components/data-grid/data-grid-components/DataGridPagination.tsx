@@ -2,10 +2,9 @@ import { Box } from "@mui/material";
 import { GridPagination } from "@mui/x-data-grid";
 import React from "react";
 
-const DataGridPagination: React.FC = (props: any) => {
+const DataGridPagination: React.FC = () => {
   return (
     <GridPagination
-      {...props}
       labelRowsPerPage={"מספר שורות בעמוד"}
       labelDisplayedRows={({ from, to, count }) => {
         return (
