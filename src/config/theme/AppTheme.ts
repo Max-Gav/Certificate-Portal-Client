@@ -39,6 +39,12 @@ declare module "@mui/material/Button" {
   }
 }
 
+declare module "@mui/material/CircularProgress"{
+  interface CircularProgressPropsColorOverrides{
+    orange: true;
+  }
+}
+
 let theme = createTheme({})
 
 theme = createTheme(theme, {
