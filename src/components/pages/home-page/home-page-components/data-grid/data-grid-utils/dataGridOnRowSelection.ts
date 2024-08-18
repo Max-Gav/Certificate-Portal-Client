@@ -1,17 +1,20 @@
-import { GridRowSelectionModel } from "@mui/x-data-grid";
+import { GridRowId, GridRowSelectionModel } from "@mui/x-data-grid";
 
 const onRowSelection = (
-  rowSelectionModel: GridRowSelectionModel,
+  newRowSelectionModel: GridRowSelectionModel,
+  setRowSelectionModel: React.Dispatch<React.SetStateAction<GridRowId[]>>,
   setSelectedCertificateId: (certificateId: string) => void,
   setExtendTools: (extendTools: boolean) => void
 ) => {
-  const certificateId = rowSelectionModel[0]
-    ? (rowSelectionModel[0] as string)
+  setRowSelectionModel(newRowSelectionModel);
+  
+  const selectedCertificateId = newRowSelectionModel[0]
+    ? (newRowSelectionModel[0] as string)
     : "";
-  setSelectedCertificateId(certificateId);
+  setSelectedCertificateId(selectedCertificateId);
 
-  setExtendTools(rowSelectionModel.length > 0);
-  if (rowSelectionModel.length > 0) {
+  setExtendTools(selectedCertificateId.length > 0);
+  if (selectedCertificateId.length > 0) {
     setExtendTools(true);
   } else {
     setExtendTools(false);

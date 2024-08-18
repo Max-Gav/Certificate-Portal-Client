@@ -1,5 +1,5 @@
 import { CircularProgress, Container } from "@mui/material";
-import { DataGrid, GridDensity } from "@mui/x-data-grid";
+import { DataGrid, GridDensity, GridRowId } from "@mui/x-data-grid";
 import React, { useState } from "react";
 import { CertificateDialogProps } from "../../../../../common/types/Dialog Types/DialogProps";
 import useGetCertificates from "../../../../../hooks/queries/certificates/useGetCertificates";
@@ -13,7 +13,10 @@ import hebrewLocaleText from "./data-grid-utils/dataGridLocaleText";
 import onRowSelection from "./data-grid-utils/dataGridOnRowSelection";
 import rowParser from "./data-grid-utils/dataGridRowParser";
 import DialogName from "../../../../../common/types/Dialog Types/DialogName";
-import { useCurrentDialog, useIsDialogOpen } from "../../../../../hooks/context/selected-certificate-row/useDialogManager";
+import {
+  useCurrentDialog,
+  useIsDialogOpen,
+} from "../../../../../hooks/context/selected-certificate-row/useDialogManager";
 import DeleteCertificateDialog from "../../../../common/certificates-dialogs/Delete Certificate Dialog/DeleteCertificateDialog";
 
 const dialogComponentMap: Record<
@@ -24,16 +27,24 @@ const dialogComponentMap: Record<
   Create: CreateCertificateDialog,
   Add: AddCertificateDialog,
   Edit: EditCertificateDialog,
-  Delete: DeleteCertificateDialog
+  Delete: DeleteCertificateDialog,
 };
+
+// Extend the props for the toolbar and pagination slots
+declare module "@mui/x-data-grid" {
+  interface ToolbarPropsOverrides {
+    extendTools: boolean;
+  }
+}
 
 const HomeDataGrid: React.FC = () => {
   const { data, isLoading } = useGetCertificates();
-  const {currentDialog, setCurrentDialog} = useCurrentDialog()
-  const {isDialogOpen, setDialogOpen} = useIsDialogOpen()
+  const { currentDialog, setCurrentDialog } = useCurrentDialog();
+  const { isDialogOpen, setDialogOpen } = useIsDialogOpen();
   const [selectedRowId, setSelectedRowId] = useState<string>("");
   const [extendTools, setExtendTools] = useState<boolean>(false);
   const [density, setDensity] = useState<GridDensity>("standard");
+  const [rowSelectionModel, setRowSelectionModel] = useState<GridRowId[]>([]);
   const rows = rowParser(data);
   const DialogComponent = dialogComponentMap[currentDialog];
 
@@ -56,13 +67,15 @@ const HomeDataGrid: React.FC = () => {
           marginTop: "20px",
         }}
       >
-        {isLoading && <CircularProgress />}
+        {isLoading && <CircularProgress color="orange" />}
         {data && (
           <DataGrid
             rows={rows}
             columns={columns}
             slots={{ toolbar: DataGridToolbar, pagination: DataGridPagination }}
-            slotProps={{ toolbar: { extendTools } }}
+            slotProps={{
+              toolbar: { extendTools },
+            }}
             initialState={{
               density: "standard",
               pagination: {
@@ -78,12 +91,18 @@ const HomeDataGrid: React.FC = () => {
             localeText={hebrewLocaleText}
             pageSizeOptions={[5, 10, 15]}
             disableMultipleRowSelection={true}
-            onRowSelectionModelChange={(rowSelectionModel) => {
+            rowSelectionModel={rowSelectionModel}
+            onRowSelectionModelChange={(newRowSelectionModel) => {
               onRowSelection(
-                rowSelectionModel,
+                newRowSelectionModel,
+                setRowSelectionModel,
                 setSelectedRowId,
                 setExtendTools
               );
+            }}
+            onPaginationModelChange={() => {
+              setExtendTools(false);
+              setRowSelectionModel([]);
             }}
             className="elevated-element"
             sx={{
