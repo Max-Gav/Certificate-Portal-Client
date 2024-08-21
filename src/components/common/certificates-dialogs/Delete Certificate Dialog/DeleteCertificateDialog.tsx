@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import useCertificateRequest from "../../../../hooks/mutations/certificates/useCertificateRequest";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import { CertificateDialogProps } from "../../../../common/types/Dialog Types/DialogProps";
+import '../CertificateDialog.css'
 
 const DeleteCertificateDialog: React.FC<CertificateDialogProps> = ({
   certificateId,
@@ -36,12 +37,6 @@ const DeleteCertificateDialog: React.FC<CertificateDialogProps> = ({
     <Dialog
       open={open}
       onClose={onClose}
-      sx={{
-        "& .MuiDialog-paper": {
-          borderRadius: "16px",
-          border: "2px solid black",
-        },
-      }}
       maxWidth={"sm"}
     >
       <DialogTitle textAlign={"center"} fontWeight={"bold"}>

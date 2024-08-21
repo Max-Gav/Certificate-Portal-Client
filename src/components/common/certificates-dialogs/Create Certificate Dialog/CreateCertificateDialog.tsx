@@ -29,6 +29,7 @@ import {
 } from "./createCertificateDialogUtils";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import { CertificateDialogProps } from "../../../../common/types/Dialog Types/DialogProps";
+import '../CertificateDialog.css'
 
 const CreateCertificateDialog: React.FC<CertificateDialogProps> = ({
   open,
@@ -79,12 +80,6 @@ const CreateCertificateDialog: React.FC<CertificateDialogProps> = ({
     <Dialog
       open={open}
       onClose={onClose}
-      sx={{
-        "& .MuiDialog-paper": {
-          borderRadius: "16px",
-          border: "3px solid black",
-        },
-      }}
       maxWidth={"sm"}
     >
       <DialogTitle textAlign={"center"} fontWeight={"bold"}>
