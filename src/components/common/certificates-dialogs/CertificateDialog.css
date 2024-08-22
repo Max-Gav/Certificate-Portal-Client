@@ -1,4 +1,4 @@
-.MuiPaper-root{
+.MuiDialog-container .MuiPaper-root{
     border-radius: 16px !important;
     border: 2px solid black !important;
 }
