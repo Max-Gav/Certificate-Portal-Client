@@ -2,6 +2,7 @@ import { useState } from "react";
 import CachedIcon from "@mui/icons-material/Cached";
 import styles from "./ToolbarReloadButton.module.css";
 import { useQueryClient } from "react-query";
+import { Tooltip } from "@mui/material";
 
 const ToolbarReloadButton = () => {
   const [isRotating, setIsRotating] = useState(false);
@@ -14,11 +15,13 @@ const ToolbarReloadButton = () => {
   };
 
   return (
-    <CachedIcon
-      className={isRotating ? styles.rotate : ""}
-      onClick={handleClick}
-      style={{ cursor: "pointer" }}
-    />
+    <Tooltip title="רענון הטבלה">
+      <CachedIcon
+        className={isRotating ? styles.rotate : ""}
+        onClick={handleClick}
+        style={{ cursor: "pointer" }}
+      />
+    </Tooltip>
   );
 };
 

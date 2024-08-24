@@ -8,6 +8,6 @@
   }
   
   .rotate {
-    animation: rotate 0.75s ease-in;
+    animation: rotate 0.75s ease-in-out;
   }
   
