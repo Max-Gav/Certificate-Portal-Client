@@ -43,6 +43,9 @@ const hebrewLocaleText = {
   columnsManagementShowHideAllText: "להראות/להסתיר את כולם",
   columnsManagementSearchTitle: "חיפוש עמודה",
   columnsManagementNoColumns: "לא נמצאו עמודות",
+
+  // General Locale Text
+  noRowsLabel: "אין תעודות להצגה"
 };
 
 export default hebrewLocaleText;
