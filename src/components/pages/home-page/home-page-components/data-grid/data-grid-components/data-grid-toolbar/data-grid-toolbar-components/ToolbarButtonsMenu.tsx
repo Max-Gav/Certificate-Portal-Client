@@ -4,6 +4,7 @@ import theme from "../../../../../../../../config/theme/AppTheme";
 import ToolbarMenuArrowButton from "./ToolbarMenuArrowButton";
 import DialogButton from "./DialogButton";
 import DialogName from "../../../../../../../../common/types/Dialog Types/DialogName";
+import ToolbarReloadButton from "./ToolbarReloadButton";
 
 type ToolbarButtonsMenuProps = {
   extendTools: boolean;
@@ -47,6 +48,7 @@ const ToolbarButtonsMenu: React.FC<ToolbarButtonsMenuProps> = ({
         isMenuOpen={isMenuOpen}
         setMenuOpen={setMenuOpen}
       />
+      <ToolbarReloadButton/>
     </>
   );
 };
