@@ -30,13 +30,6 @@ const dialogComponentMap: Record<
   Delete: DeleteCertificateDialog,
 };
 
-// Extend the props for the toolbar and pagination slots
-declare module "@mui/x-data-grid" {
-  interface ToolbarPropsOverrides {
-    extendTools: boolean;
-  }
-}
-
 const HomeDataGrid: React.FC = () => {
   const { data, isLoading } = useGetCertificates();
   const { currentDialog, setCurrentDialog } = useCurrentDialog();
