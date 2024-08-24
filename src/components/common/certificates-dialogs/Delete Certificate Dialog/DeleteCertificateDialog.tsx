@@ -30,7 +30,7 @@ const DeleteCertificateDialog: React.FC<CertificateDialogProps> = ({
   }, [statusCode]);
 
   const handleDelete = () => {
-    deleteCertificateMutation.mutate({ certificate_id: certificateId });
+    deleteCertificateMutation.mutate(certificateId);
   };
 
   return (
