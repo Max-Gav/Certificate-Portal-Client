@@ -20,7 +20,7 @@ type DialogButtonProps = {
 const buttonTooltipTitleMap: Record<DialogName, string> = {
   None: "לא זמין",
   Create: "יצירת תעודה",
-  Add: "העלאת תעודה",
+  Upload: "העלאת תעודה",
   Edit: "עריכת תעודה",
   Delete: "מחיקת תעודה",
 };
@@ -33,7 +33,7 @@ const buttonIconComponentMap: Record<
 > = {
   None: AddIcon,
   Create: AddIcon,
-  Add: FileUploadIcon,
+  Upload: FileUploadIcon,
   Edit: ModeEditIcon,
   Delete: DeleteIcon,
 };
@@ -44,7 +44,7 @@ const buttonColorMap: Record<
 > = {
   None: "success",
   Create: "success",
-  Add: "secondary",
+  Upload: "secondary",
   Edit: "primary",
   Delete: "error",
 };

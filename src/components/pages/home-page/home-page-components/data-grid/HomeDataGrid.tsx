@@ -25,7 +25,7 @@ const dialogComponentMap: Record<
 > = {
   None: () => <></>,
   Create: CreateCertificateDialog,
-  Add: AddCertificateDialog,
+  Upload: UploadCertificateDialog,
   Edit: EditCertificateDialog,
   Delete: DeleteCertificateDialog,
 };
