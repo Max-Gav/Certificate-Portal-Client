@@ -3,7 +3,7 @@ import { DataGrid, GridDensity, GridRowId } from "@mui/x-data-grid";
 import React, { useState } from "react";
 import { CertificateDialogProps } from "../../../../../common/types/Dialog Types/DialogProps";
 import useGetCertificates from "../../../../../hooks/queries/certificates/useGetCertificates";
-import AddCertificateDialog from "../../../../common/certificates-dialogs/Add Certificate Dialog/AddCertificateDialog";
+import UploadCertificateDialog from "../../../../common/certificates-dialogs/Upload Certificate Dialog/UploadCertificateDialog";
 import CreateCertificateDialog from "../../../../common/certificates-dialogs/Create Certificate Dialog/CreateCertificateDialog";
 import EditCertificateDialog from "../../../../common/certificates-dialogs/Edit Certificate Dialog/EditCertificateDialog";
 import DataGridToolbar from "./data-grid-components/data-grid-toolbar/DataGridToolbar";
