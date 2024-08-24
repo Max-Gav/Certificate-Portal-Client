@@ -20,7 +20,7 @@ type DialogButtonProps = {
 const buttonTooltipTitleMap: Record<DialogName, string> = {
   None: "לא זמין",
   Create: "יצירת תעודה",
-  Add: "הוספת תעודה",
+  Add: "העלאת תעודה",
   Edit: "עריכת תעודה",
   Delete: "מחיקת תעודה",
 };
