@@ -18,6 +18,7 @@ const useGetCertificates = () => {
       console.error("Error fetching certificates:", error);
     },
     retry: false,
+    refetchInterval: 30000
   });
 };
 
