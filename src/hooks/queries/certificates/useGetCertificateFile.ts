@@ -14,12 +14,19 @@ const downloadFile = (fileData: Blob, filename: string) => {
 };
 
 const useGetCertificateFile = async (certificate_id: string) => {
-  const response = await axiosInstance.get<Blob>(
-    APIRoutes.GET_CERTIFICATE_FILE + `/${certificate_id}`,
-    { responseType: "blob" }
-  );
+  const statusCode = await axiosInstance
+    .get<Blob>(APIRoutes.GET_CERTIFICATE_FILE + `/${certificate_id}`, {
+      responseType: "blob",
+    })
+    .then((response) => {
+      downloadFile(response.data, `${certificate_id}.pem`);
+      return response.status;
+    })
+    .catch((error) => {
+      return error.response.status;
+    });
 
-  downloadFile(response.data, `${certificate_id}.pem`);
+  return statusCode;
 };
 
 export default useGetCertificateFile;
