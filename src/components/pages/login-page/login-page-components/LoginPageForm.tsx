@@ -14,6 +14,7 @@ import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import loginSchema from "../../../../common/schemas/loginSchema";
 import AuthFormDetails from "../../../../common/types/Authentication Types/AuthFormDetails";
+import { useIsLoggedIn } from "../../../../hooks/context/is-logged-in/useIsLoggedIn";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
@@ -24,21 +25,21 @@ const LoginPageForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
     setError,
-    } = useForm({ resolver: yupResolver(loginSchema) });
+  } = useForm({ resolver: yupResolver(loginSchema) });
+  const navigate = useNavigate();
   const { setIsLoggedIn } = useIsLoggedIn();
-    
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const onSubmit = (data: AuthFormDetails) => {
-      loginMutation.mutate(data);
-    };
-    const navigate = useNavigate();
-
+  const onSubmit = (data: AuthFormDetails) => {
+    loginMutation.mutate(data);
+  };
   useEffect(() => {
     switch (statusCode) {
       case 200:
-        navigate("/")
+        navigate("/");
+        setIsLoggedIn(true);
         break;
       case 401:
         setError("password", { type: "server", message: "סיסמא שגויה" });
@@ -53,11 +54,7 @@ const LoginPageForm: React.FC = () => {
   }, [statusCode]);
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ mt: 1 }}
-    >
+    <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
       <TextField
         margin="normal"
         required
@@ -100,7 +97,7 @@ const LoginPageForm: React.FC = () => {
         sx={{ mt: 3, mb: 2, height: "40px" }}
       >
         {loginMutation.isLoading ? (
-          <CircularProgress size={24} color="inherit"/>
+          <CircularProgress size={24} color="inherit" />
         ) : (
           "התחברות"
         )}

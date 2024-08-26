@@ -3,7 +3,9 @@ import { useQuery } from "react-query";
 import APIRoutes from "../../../config/api/APIRoutes";
 import TokenPayload from "../../../common/types/General Types/TokenPayload";
 
-const useGetMe = () => {
+const useGetMe = (
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   return useQuery<TokenPayload, Error>({
     queryKey: ["me"],
     queryFn: (): Promise<TokenPayload> => {
@@ -11,10 +13,11 @@ const useGetMe = () => {
         .get<TokenPayload>(APIRoutes.ME)
         .then((response) => response.data);
     },
-
-    onSettled: () => {
-      // console.log(data);
-      // console.log(error);
+    onSuccess: () => {
+      setIsLoggedIn(true);
+    },
+    onError: () => {
+      setIsLoggedIn(false);
     },
     retry: false,
   });

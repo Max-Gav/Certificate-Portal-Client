@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { Button, TextField, Box, CircularProgress } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +12,8 @@ import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import registerSchema from "../../../../common/schemas/registerSchema";
 import AuthFormDetails from "../../../../common/types/Authentication Types/AuthFormDetails";
+import { useIsLoggedIn } from "../../../../hooks/context/is-logged-in/useIsLoggedIn";
+
 
 const SignUpForm: React.FC = () => {
   const [registerMutation, statusCode] = useAuthForm(APIRoutes.REGISTER);
@@ -17,15 +24,18 @@ const SignUpForm: React.FC = () => {
     setError,
   } = useForm({ resolver: yupResolver(registerSchema) });
 
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useIsLoggedIn();
+
   const onSubmit = (data: AuthFormDetails) => {
     registerMutation.mutate(data);
   };
-  const navigate = useNavigate();
 
   useEffect(() => {
     switch (statusCode) {
       case 201:
         navigate("/");
+        setIsLoggedIn(true);
         break;
       case 409:
         setError("username", {
