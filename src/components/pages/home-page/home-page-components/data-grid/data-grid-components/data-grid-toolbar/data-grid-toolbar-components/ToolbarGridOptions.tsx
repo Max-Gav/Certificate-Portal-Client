@@ -5,12 +5,12 @@ import {
   GridToolbarFilterButton,
 } from "@mui/x-data-grid";
 import React from "react";
-import { whiteToolbarButtons } from "../DataGridToolbarTheme";
+import { whiteToolbarButtonsTheme } from "../DataGridToolbarTheme";
 
 const ToolbarGridOptions: React.FC = () => {
   return (
     <Box>
-      <ThemeProvider theme={whiteToolbarButtons}>
+      <ThemeProvider theme={whiteToolbarButtonsTheme}>
         <GridToolbarDensitySelector />
         <GridToolbarColumnsButton />
         <GridToolbarFilterButton />
