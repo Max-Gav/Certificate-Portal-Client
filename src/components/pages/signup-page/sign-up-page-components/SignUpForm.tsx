@@ -60,6 +60,7 @@ const SignUpForm: React.FC = () => {
         id="username"
         label="שם משתמש"
         autoFocus
+        InputLabelProps={{ shrink: true }}
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
         color="black"
@@ -72,6 +73,7 @@ const SignUpForm: React.FC = () => {
         label="סיסמא"
         type="password"
         id="password"
+        InputLabelProps={{ shrink: true }}
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
         color="black"
@@ -84,6 +86,7 @@ const SignUpForm: React.FC = () => {
         label="אשר סיסמא"
         type="password"
         id="confirmPassword"
+        InputLabelProps={{ shrink: true }}
         error={Boolean(errors.confirm_password)}
         helperText={errors.confirm_password?.message}
         color="black"

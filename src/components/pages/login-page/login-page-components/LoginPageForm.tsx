@@ -63,6 +63,7 @@ const LoginPageForm: React.FC = () => {
         label="שם משתמש"
         type="text"
         autoFocus
+        InputLabelProps={{ shrink: true }}
         error={Boolean(errors.username)}
         helperText={errors.username?.message}
         color="black"
@@ -78,9 +79,10 @@ const LoginPageForm: React.FC = () => {
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
         color="black"
+        InputLabelProps={{ shrink: true }}
         InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
+          endAdornment: (
+            <InputAdornment position="end">
               <IconButton onClick={handleClickShowPassword}>
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
