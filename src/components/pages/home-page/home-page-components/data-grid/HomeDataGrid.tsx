@@ -16,7 +16,7 @@ import DialogName from "../../../../../common/types/Dialog Types/DialogName";
 import {
   useCurrentDialog,
   useIsDialogOpen,
-} from "../../../../../hooks/context/selected-certificate-row/useDialogManager";
+} from "../../../../../hooks/context/dialog-manager/useDialogManager";
 import DeleteCertificateDialog from "../../../../common/certificates-dialogs/Delete Certificate Dialog/DeleteCertificateDialog";
 
 const dialogComponentMap: Record<
