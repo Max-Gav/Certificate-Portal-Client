@@ -13,6 +13,7 @@ type ToolbarButtonsMenuProps = {
 const buttonConfigs = [
   { dialogName: "Create" as DialogName },
   { dialogName: "Upload" as DialogName },
+  { dialogName: "Download" as DialogName, extendToolsRequired: true },
   { dialogName: "Edit" as DialogName, extendToolsRequired: true },
   { dialogName: "Delete" as DialogName, extendToolsRequired: true },
 ];

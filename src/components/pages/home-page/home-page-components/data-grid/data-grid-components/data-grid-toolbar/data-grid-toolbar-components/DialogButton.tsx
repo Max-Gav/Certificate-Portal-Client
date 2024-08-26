@@ -10,6 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 type DialogButtonProps = {
   dialogName: DialogName;
@@ -21,6 +22,7 @@ const buttonTooltipTitleMap: Record<DialogName, string> = {
   None: "לא זמין",
   Create: "יצירת תעודה",
   Upload: "העלאת תעודה",
+  Download: "הורדת תעודה",
   Edit: "עריכת תעודה",
   Delete: "מחיקת תעודה",
 };
@@ -34,17 +36,19 @@ const buttonIconComponentMap: Record<
   None: AddIcon,
   Create: AddIcon,
   Upload: FileUploadIcon,
+  Download: FileDownloadIcon,
   Edit: ModeEditIcon,
   Delete: DeleteIcon,
 };
 
 const buttonColorMap: Record<
   DialogName,
-  "success" | "secondary" | "primary" | "error"
+  "success" | "secondary" | "purple" | "primary" | "error" 
 > = {
   None: "success",
   Create: "success",
   Upload: "secondary",
+  Download: "purple",  
   Edit: "primary",
   Delete: "error",
 };
@@ -57,7 +61,7 @@ const DialogButton: React.FC<DialogButtonProps> = ({
   const { setCurrentDialog } = useCurrentDialog();
   const { setDialogOpen } = useIsDialogOpen();
   const ButtonIconComponent = buttonIconComponentMap[dialogName];
-
+  
   return (
     <Tooltip title={buttonTooltipTitleMap[dialogName]}>
       <IconButton

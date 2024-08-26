@@ -18,6 +18,7 @@ import {
   useIsDialogOpen,
 } from "../../../../../hooks/context/dialog-manager/useDialogManager";
 import DeleteCertificateDialog from "../../../../common/certificates-dialogs/Delete Certificate Dialog/DeleteCertificateDialog";
+import DownloadCertificateDialog from "../../../../common/certificates-dialogs/Download Certificate Dialog/DownloadCertificateDialog";
 
 const dialogComponentMap: Record<
   DialogName,
@@ -26,6 +27,7 @@ const dialogComponentMap: Record<
   None: () => <></>,
   Create: CreateCertificateDialog,
   Upload: UploadCertificateDialog,
+  Download: DownloadCertificateDialog,
   Edit: EditCertificateDialog,
   Delete: DeleteCertificateDialog,
 };
