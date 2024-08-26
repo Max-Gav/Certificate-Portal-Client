@@ -1,8 +1,8 @@
 import React, { ReactNode, useEffect } from "react";
 import useGetMe from "../../../hooks/queries/auth/useGetMe";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useIsLoggedIn } from "../../../hooks/context/is-logged-in/useIsLoggedIn";
+import { toastify } from "../../../common/utils/toastifyUtils";
 
 interface ProtectedPageProps {
   children: ReactNode;
@@ -15,17 +15,15 @@ const ProtectedPage: React.FC<ProtectedPageProps> = ({
 }) => {
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn } = useIsLoggedIn();
-  const notify = (message: string) =>
-    toast.info(message, { position: "bottom-right" });
   useGetMe(setIsLoggedIn);
 
   useEffect(() => {
     if (isTokenRequired && !isLoggedIn) {
-      notify("יש להתחבר על מנת לעבור לעמוד הבית");
+      toastify("יש להתחבר על מנת לעבור לעמוד הבית", "info");
       navigate("/login");
       console.log("יש להתחבר על מנת לעבור לעמוד הבית");
     } else if (!isTokenRequired && isLoggedIn) {
-      notify("משתמש כבר מחובר למערכת");
+      toastify("משתמש כבר מחובר למערכת", "info");
       navigate("/");
       console.log("משתמש כבר מחובר למערכת");
     }
