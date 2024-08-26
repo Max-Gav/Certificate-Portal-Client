@@ -1,3 +1,3 @@
-type DialogName = "None" | "Create" | "Upload" | "Edit" | "Delete" ;
+type DialogName = "None" | "Create" | "Upload" | "Download" | "Edit" | "Delete" ;
 
 export default DialogName
