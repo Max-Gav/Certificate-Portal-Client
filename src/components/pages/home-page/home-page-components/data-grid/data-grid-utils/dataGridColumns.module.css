@@ -1,0 +1,20 @@
+  .expired {
+    background-color: #da1709;
+    color: black;
+  }
+  
+  .almostExpired {
+    background-color: #e08b0b; 
+    color: black;
+  }
+  
+  .expiring {
+    background-color: #ebd517;
+    color: black;
+  }
+  
+  .valid {
+    background-color: #2db631;
+    color: black;
+  }
+  
