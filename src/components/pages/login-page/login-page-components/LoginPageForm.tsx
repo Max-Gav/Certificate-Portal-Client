@@ -1,5 +1,12 @@
 import React, { useEffect } from "react";
-import { Button, TextField, Box, CircularProgress } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Box,
+  CircularProgress,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +14,8 @@ import useAuthForm from "../../../../hooks/mutations/auth/useAuthForm";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import loginSchema from "../../../../common/schemas/loginSchema";
 import AuthFormDetails from "../../../../common/types/Authentication Types/AuthFormDetails";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const LoginPageForm: React.FC = () => {
   const [loginMutation, statusCode] = useAuthForm(APIRoutes.LOGIN);
@@ -16,7 +25,11 @@ const LoginPageForm: React.FC = () => {
     formState: { errors },
     setError,
     } = useForm({ resolver: yupResolver(loginSchema) });
+  const { setIsLoggedIn } = useIsLoggedIn();
     
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
     const onSubmit = (data: AuthFormDetails) => {
       loginMutation.mutate(data);
     };
@@ -63,11 +76,20 @@ const LoginPageForm: React.FC = () => {
         required
         fullWidth
         label="סיסמא"
-        type="password"
+        type={showPassword ? "text" : "password"}
         id="password"
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
         color="black"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <IconButton onClick={handleClickShowPassword}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
         {...register("password")}
       />
       <Button
