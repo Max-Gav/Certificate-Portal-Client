@@ -3,6 +3,7 @@ import CachedIcon from "@mui/icons-material/Cached";
 import styles from "./ToolbarReloadButton.module.css";
 import { useQueryClient } from "react-query";
 import { Tooltip } from "@mui/material";
+import CacheKeys from "../../../../../../../../hooks/CacheKeys";
 
 const ToolbarReloadButton = () => {
   const [isRotating, setIsRotating] = useState(false);
@@ -11,7 +12,7 @@ const ToolbarReloadButton = () => {
   const handleClick = () => {
     setIsRotating(true);
     setTimeout(() => setIsRotating(false), 750);
-    queryClient.refetchQueries(["certificates"]);
+    queryClient.refetchQueries([CacheKeys.GetCertificates]);
   };
 
   return (

@@ -2,6 +2,7 @@ import axiosInstance from "../../../config/api/api";
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { useStateIfMounted } from "use-state-if-mounted";
+import CacheKeys from "../../CacheKeys";
 
 const useCertificateRequest = <T,>(
   apiRoute: string,
@@ -41,7 +42,7 @@ const useCertificateRequest = <T,>(
     },
     onSuccess: (data: AxiosResponse) => {
       setStatusCode(data?.status);
-      queryClient.refetchQueries(["certificates"]);
+      queryClient.refetchQueries([CacheKeys.GetCertificates]);
     },
     onError: (error: AxiosError) => {
       setStatusCode(error?.response?.status);
