@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Box,
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -15,7 +16,7 @@ import EditCertificateData from "../../../../common/types/Certificate Types/Edit
 import useCertificateRequest from "../../../../hooks/mutations/certificates/useCertificateRequest";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import { CertificateDialogProps } from "../../../../common/types/Dialog Types/DialogProps";
-import '../CertificateDialog.css'
+import "../CertificateDialog.css";
 
 const EditCertificateDialog: React.FC<CertificateDialogProps> = ({
   certificateId,
@@ -44,11 +45,7 @@ const EditCertificateDialog: React.FC<CertificateDialogProps> = ({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      maxWidth={"sm"}
-    >
+    <Dialog open={open} onClose={onClose} maxWidth={"sm"}>
       <DialogTitle textAlign={"center"} fontWeight={"bold"}>
         עריכת תעודה
       </DialogTitle>
@@ -76,9 +73,13 @@ const EditCertificateDialog: React.FC<CertificateDialogProps> = ({
           />
 
           <DialogActions>
-            <Button type="submit" color="primary">
-              עריכה
-            </Button>
+            {editCertificateMutation.isLoading ? (
+              <CircularProgress size={24} color="primary" />
+            ) : (
+              <Button type="submit" color="primary">
+                עריכה
+              </Button>
+            )}
             <Button onClick={onClose} color="primary">
               ביטול
             </Button>

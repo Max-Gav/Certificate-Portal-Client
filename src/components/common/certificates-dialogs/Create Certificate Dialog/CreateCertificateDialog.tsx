@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Chip,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -29,7 +30,7 @@ import {
 } from "./createCertificateDialogUtils";
 import APIRoutes from "../../../../config/api/APIRoutes";
 import { CertificateDialogProps } from "../../../../common/types/Dialog Types/DialogProps";
-import '../CertificateDialog.css'
+import "../CertificateDialog.css";
 
 const CreateCertificateDialog: React.FC<CertificateDialogProps> = ({
   open,
@@ -77,11 +78,7 @@ const CreateCertificateDialog: React.FC<CertificateDialogProps> = ({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      maxWidth={"sm"}
-    >
+    <Dialog open={open} onClose={onClose} maxWidth={"sm"}>
       <DialogTitle textAlign={"center"} fontWeight={"bold"}>
         יצירת תעודה חדשה
       </DialogTitle>
@@ -220,9 +217,13 @@ const CreateCertificateDialog: React.FC<CertificateDialogProps> = ({
           ))}
 
           <DialogActions>
-            <Button type="submit" color="primary">
-              יצירה
-            </Button>
+            {createCertificateMutation.isLoading ? (
+              <CircularProgress size={24} color="primary" />
+            ) : (
+              <Button type="submit" color="primary">
+                יצירה
+              </Button>
+            )}
             <Button onClick={onClose} color="primary">
               ביטול
             </Button>

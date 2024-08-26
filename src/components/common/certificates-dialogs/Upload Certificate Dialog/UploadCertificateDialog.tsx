@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Box,
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -89,9 +90,13 @@ const UploadCertificateDialog: React.FC<CertificateDialogProps> = ({
           />
 
           <DialogActions>
-            <Button type="submit" color="primary">
-              העלאה
-            </Button>
+            {uploadCertificateMutation.isLoading ? (
+              <CircularProgress size={24} color="primary" />
+            ) : (
+              <Button type="submit" color="primary">
+                העלאה
+              </Button>
+            )}
             <Button onClick={onClose} color="primary">
               ביטול
             </Button>
