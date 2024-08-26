@@ -2,7 +2,7 @@ import React from "react";
 import {
   useCurrentDialog,
   useIsDialogOpen,
-} from "../../../../../../../../hooks/context/selected-certificate-row/useDialogManager";
+} from "../../../../../../../../hooks/context/dialog-manager/useDialogManager";
 import { IconButton, SvgIconTypeMap, Tooltip } from "@mui/material";
 import DialogName from "../../../../../../../../common/types/Dialog Types/DialogName";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
